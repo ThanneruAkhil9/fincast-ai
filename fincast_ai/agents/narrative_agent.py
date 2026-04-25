@@ -64,4 +64,3 @@ class NarrativeAgent:
         actual, budget = df["actual"].sum(), df["budget"].sum()
         prompt = f"Write 2 sentences on {dept} department. Actual: ${actual:,.0f}, Budget: ${budget:,.0f}."
         return self._generate(prompt, f"{dept} variance: ${actual-budget:,.0f}")
-

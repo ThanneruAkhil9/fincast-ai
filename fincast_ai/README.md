@@ -133,8 +133,7 @@ fincast-ai/
 
 ## 🧑‍💻 Built By
 
-**[Your Name]** — Data Analyst at Enviri  
-Supporting FP&A, AP, AR, GL, and HR teams with AI-powered analytics.
+*Thanneru Akhil*.
 
 *Built with ❤️ to solve real problems I face every day at work.*
 

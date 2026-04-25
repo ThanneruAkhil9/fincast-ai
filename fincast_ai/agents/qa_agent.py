@@ -3,13 +3,14 @@ import pandas as pd
 from datetime import datetime
 from groq import Groq
  
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL   = "llama-3.3-70b-versatile"
+GROQ_MODEL = "llama-3.3-70b-versatile"
  
 class QAAgent:
     def __init__(self, con):
         self.con = con
         self.log = []
+        # Read key at runtime (not module load time) so Streamlit secrets are available
+        GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
         self.mode = "groq" if GROQ_API_KEY else "pattern"
  
         if self.mode == "groq":

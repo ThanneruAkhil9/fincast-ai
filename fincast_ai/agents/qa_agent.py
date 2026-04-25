@@ -16,8 +16,7 @@ class QAAgent:
         if self.mode == "groq":
             try:
                 self.client = Groq(
-                    api_key=GROQ_API_KEY,
-                    default_headers={"User-Agent": "Mozilla/5.0"}
+                    api_key=GROQ_API_KEY
                 )
             except Exception as e:
                 self._log(f"⚠️ Groq init failed: {e}")

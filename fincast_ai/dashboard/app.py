@@ -12,6 +12,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+# ── Inject Streamlit secrets into environment ──────────────
+import os
+try:
+    if hasattr(st, "secrets") and "GROQ_API_KEY" in st.secrets:
+        os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+except Exception:
+    pass
+
 st.set_page_config(
     page_title="FinCast AI",
     page_icon="💹",

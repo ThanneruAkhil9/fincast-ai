@@ -3,12 +3,13 @@ import pandas as pd
 from datetime import datetime
 from groq import Groq
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL   = "llama-3.3-70b-versatile" 
+GROQ_MODEL = "llama-3.3-70b-versatile"
 
 class NarrativeAgent:
     def __init__(self):
         self.log  = []
+        # Read key at runtime (not module load time) so Streamlit secrets are available
+        GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
         self.mode = "groq" if GROQ_API_KEY else "template"
         if self.mode == "groq":
             try:
@@ -63,3 +64,4 @@ class NarrativeAgent:
         actual, budget = df["actual"].sum(), df["budget"].sum()
         prompt = f"Write 2 sentences on {dept} department. Actual: ${actual:,.0f}, Budget: ${budget:,.0f}."
         return self._generate(prompt, f"{dept} variance: ${actual-budget:,.0f}")
+

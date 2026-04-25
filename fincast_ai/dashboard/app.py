@@ -7,18 +7,18 @@ import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import streamlit as st
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
-# ── Inject Streamlit secrets into environment ──────────────
-import os
+# ── Inject Streamlit secrets into environment (MUST be before agent imports) ──
 try:
     if hasattr(st, "secrets") and "GROQ_API_KEY" in st.secrets:
         os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 except Exception:
     pass
+
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 st.set_page_config(
     page_title="FinCast AI",
@@ -432,4 +432,5 @@ elif page == "⚙️ Agent Logs":
         all_logs += logs
 
     log_html = "<div class='agent-log'>" + "<br>".join(all_logs) + "</div>"
+    st.markdown(log_html, unsafe_allow_html=True)
     st.markdown(log_html, unsafe_allow_html=True)

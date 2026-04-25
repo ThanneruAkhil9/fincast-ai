@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment - NEVER commit this
+venv/
+.venv/
+env/
+
+# Environment variables - NEVER commit API keys
+.env
+*.env
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Data (optional)
+# data/*.csv
